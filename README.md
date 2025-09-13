@@ -1,56 +1,70 @@
-###### **SHOW DBS**
+##### **SHOW DBS**
 
 ```
-test> show dbs    // to show databases
-```
-
----
-
-###### **USE DB**
-
-```
-test> use school    // creates schooldb
+test> show dbs
 ```
 
 ---
 
-###### **CREATE COMMAND**
+##### **USE DB**
 
 ```
-school> db.createCollection("students")    // creates collection named students
-```
-
----
-
-###### **DROP COMMAND**
-
-```
-school> db.dropDatabase()    // removes schooldb
+test> use school
 ```
 
 ---
 
-###### **INSERT COMMAND**
+##### **CREATE COMMAND**
+
+```
+school> db.createCollection("students")
+```
+
+---
+
+##### **DROP COMMAND**
+
+```
+school> db.dropDatabase()
+```
+
+---
+
+##### **INSERT COMMAND**
 
 ```
 // insert one document
+
 school> db.students.insertOne({ name: "Jay" , rollno: 11 })
 
 // insert many documents
+
 school> db.students.insertMany([{ name: "Dev" , rollno: 10 } , { name: "Raj" , rollno: 12 } , { name: "Ansh" , rollno: 13 }])
 ```
 
 ---
 
-###### **VIEW ALL DOCS COMMAND**
+##### **FIND COMMAND**
 
 ```
+// all documents are returned
+
 school> db.students.find()
+
+// first documents is returned
+
+school> db.students.findOne()
+
+// queried document is returned
+
+school> db.students.find( { rollno: 11 } )
+
+school> db.students.findOne( { rollno: 11 } )
 ```
 
 ---
 
-###### **DATATYPES**
+##### **DATATYPES**
 
 ```
 school> db.data.insertOne({
