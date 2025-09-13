@@ -111,7 +111,9 @@ school> db.students.insertOne({
 ##### **UPDATE COMMAND**
 
 ```
-school> db.students.updateOne( { name: "Ansh" }, { $set: { rollno: 14 } } )
+school> db.students.updateOne(
+        { name: "Ansh" },
+        { $set: { rollno: 14 } } )
 ```
 
 ---
@@ -119,7 +121,10 @@ school> db.students.updateOne( { name: "Ansh" }, { $set: { rollno: 14 } } )
 ##### **UPSERT COMMAND**
 
 ```
-school> db.students.updateOne( { name: "Shiv" }, { $set: { name: "Shiv", rollno: 13 } }, { upsert: true } )
+school> db.students.updateOne(
+        { name: "Shiv" },
+        { $set: { name: "Shiv", rollno: 13 } },
+        { upsert: true } )
 ```
 
 ---
@@ -143,6 +148,7 @@ school> db.students.deleteOne({ rollno: 0 })
 
 
 // delete many documents
+
 school> db.students.deleteMany({ age: 18 })
 ```
 
