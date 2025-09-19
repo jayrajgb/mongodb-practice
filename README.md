@@ -69,6 +69,20 @@ school> db.students.findOne( { rollno: 11 } )
 
 school> db.students.find({}, {_id: 0, name: 1, date: 1})
 
+// can use true / false instead
+// cannot use 0, 1 together, _id is exception
+
+// find that not equals to
+school> db.students.find({ name: {$ne: "Jay"} })
+
+// find that is lt, lte, gt, gte
+school> db.students.find({ rollno: {$lt: 10} })
+school> db.students.find({ rollno: {$gte: 5, $lte: 10} })
+
+// find using in or nin operator, within a array of range
+school> db.students.find({ name: {$in: ["Jay", "Raj"] } })
+school> db.students.find({ name: {$nin: ["Ansh", "Dev"] } })
+
 ```
 
 ---
@@ -114,6 +128,10 @@ school> db.students.insertOne({
 school> db.students.updateOne(
         { name: "Ansh" },
         { $set: { rollno: 14 } } )
+
+school> db.students.updateOne(
+        { name: "Ansh" },
+        { $unset: { passout: true } } )
 ```
 
 ---
@@ -135,6 +153,12 @@ school> db.students.updateOne(
 school> db.students.updateMany({}, { $inc: { rollno: 1 } })
 
 school> db.students.updateMany({}, { $inc: { rollno: -1 } })
+
+school> db.students.updateMany({}, { $set: { passout: false } })
+
+school> db.students.updateMany(
+        { passout: { $exists: false } },
+        { $set: { passout: true } } )
 ```
 
 ---
@@ -150,6 +174,24 @@ school> db.students.deleteOne({ rollno: 0 })
 // delete many documents
 
 school> db.students.deleteMany({ age: 18 })
+
+school> db.students.deleteMany({ passout: { $exists: false } })
+```
+
+---
+
+##### **SORT COMMAND**
+
+```
+school> db.students.find().sort({ rollno: 1 })          // 1 for asc, -1 for desc
+```
+
+---
+
+##### **LIMIT COMMAND**
+
+```
+school> school> db.students.find().limit(2)
 ```
 
 ---
